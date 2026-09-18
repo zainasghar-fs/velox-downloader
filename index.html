@@ -1,0 +1,359 @@
+<title>Velox Companion Privacy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
+
+  :root {
+    --bg: #faf9fc;
+    --surface: #ffffff;
+    --border: #e5e3ee;
+    --text: #1d1e2a;
+    --text-secondary: #5b5e70;
+    --text-faint: #8b8ea3;
+    --accent: #4f46e5;
+    --accent-soft: #eeedfb;
+    --mono-chip-bg: #f1f0f8;
+    --mono-chip-text: #423ccb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121319;
+      --surface: #191b25;
+      --border: #2c2f3f;
+      --text: #e8e8f0;
+      --text-secondary: #a7aabf;
+      --text-faint: #6d7086;
+      --accent: #7a71f2;
+      --accent-soft: #242540;
+      --mono-chip-bg: #23253a;
+      --mono-chip-text: #a79dff;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #121319;
+    --surface: #191b25;
+    --border: #2c2f3f;
+    --text: #e8e8f0;
+    --text-secondary: #a7aabf;
+    --text-faint: #6d7086;
+    --accent: #7a71f2;
+    --accent-soft: #242540;
+    --mono-chip-bg: #23253a;
+    --mono-chip-text: #a79dff;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.65;
+    margin: 0;
+    padding-block: 64px 96px;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding-inline: 20px;
+  }
+
+  header.masthead {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+
+  .glyph {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), #837cf5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .masthead-text .product {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  h1 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 2.6rem);
+    margin: 4px 0 6px;
+    text-wrap: balance;
+  }
+
+  .updated {
+    color: var(--text-faint);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 40px;
+  }
+
+  nav.toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 48px;
+  }
+
+  nav.toc p {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  nav.toc ol {
+    margin: 0;
+    padding-left: 20px;
+    columns: 2;
+    font-size: 14px;
+  }
+
+  nav.toc li { margin-bottom: 6px; }
+  nav.toc a { color: var(--text-secondary); text-decoration: none; }
+  nav.toc a:hover { color: var(--accent); text-decoration: underline; }
+
+  section { margin-bottom: 44px; scroll-margin-top: 24px; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    margin: 0 0 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  h2 .num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    font-weight: 500;
+  }
+
+  p { margin: 0 0 14px; color: var(--text); max-width: 64ch; }
+  p.lede { color: var(--text-secondary); }
+
+  ul.plain { margin: 0 0 14px; padding-left: 20px; }
+  ul.plain li { margin-bottom: 6px; max-width: 60ch; }
+
+  .callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14.5px;
+    margin-bottom: 14px;
+  }
+  .callout strong { color: var(--accent); }
+
+  .perm-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .perm-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .perm-row:last-child { border-bottom: none; }
+
+  .perm-chip {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--mono-chip-text);
+    background: var(--mono-chip-bg);
+    border-radius: 6px;
+    padding: 4px 9px;
+    align-self: start;
+    white-space: nowrap;
+  }
+
+  .perm-row p { margin: 0; font-size: 14.5px; color: var(--text-secondary); max-width: 52ch; }
+
+  @media (max-width: 560px) {
+    .perm-row { grid-template-columns: 1fr; }
+    nav.toc ol { columns: 1; }
+  }
+
+  .not-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 560px) { .not-list { grid-template-columns: 1fr; } }
+
+  .not-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .not-item .x {
+    color: var(--accent);
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    margin-top: 60px;
+    font-size: 13px;
+    color: var(--text-faint);
+  }
+
+  a.contact { color: var(--accent); }
+
+  code.inline {
+    font-family: 'IBM Plex Mono', monospace;
+    background: var(--mono-chip-bg);
+    color: var(--mono-chip-text);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.88em;
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="glyph">V</div>
+    <div class="masthead-text">
+      <div class="product">Velox Downloader — Browser Companion</div>
+    </div>
+  </header>
+
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated September 15, 2026</p>
+
+  <nav class="toc" aria-label="Table of contents">
+    <p>On this page</p>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#access">What the extension can see</a></li>
+      <li><a href="#storage">What it stores</a></li>
+      <li><a href="#permissions">Why each permission exists</a></li>
+      <li><a href="#not">What it never does</a></li>
+      <li><a href="#thirdparty">Third parties</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <section id="overview">
+    <h2><span class="num">01</span> Overview</h2>
+    <p class="lede">Velox Downloader — Browser Companion is a Chrome extension that hands downloads and videos from your browser to the Velox Downloader desktop app on your own Windows PC. It has one job: catch a URL, and pass it to an app already running on your computer. It is not a service, has no backend, and no server operated by the developer is involved anywhere in that path.</p>
+  </section>
+
+  <section id="access">
+    <h2><span class="num">02</span> What the extension can see</h2>
+    <p>The extension reads two kinds of information, only at the moment they're needed:</p>
+    <ul class="plain">
+      <li><strong>Download URLs</strong> — when Chrome starts a download, the extension reads that download's URL and suggested filename so it can offer it to Velox Downloader.</li>
+      <li><strong>Video source URLs</strong> — the content script looks for <code class="inline">&lt;video&gt;</code> elements on the page you're viewing, so it can show a "Download this video" button. It reads the video's source URL only when you click that button — it does not read surrounding page text, forms, or any other content.</li>
+    </ul>
+    <div class="callout"><strong>None of this leaves your computer.</strong> Both kinds of URL are sent only to the Velox Downloader app running locally on your own machine, over Chrome's Native Messaging protocol — a local, direct channel between the extension and a desktop app you installed. Nothing is transmitted to the developer, to analytics services, or to any server on the internet.</div>
+  </section>
+
+  <section id="storage">
+    <h2><span class="num">03</span> What it stores</h2>
+    <p>The extension keeps exactly one value in <code class="inline">chrome.storage.local</code>: whether you've switched it on or off from the popup. That's the entire contents of its storage — no history of downloads, no browsing activity, no video URLs are retained after they're handed off.</p>
+  </section>
+
+  <section id="permissions">
+    <h2><span class="num">04</span> Why each permission exists</h2>
+    <div class="perm-list">
+      <div class="perm-row">
+        <span class="perm-chip">downloads</span>
+        <p>Detects a download you start in Chrome, and — once handed off successfully — cancels Chrome's own copy so the file isn't saved twice.</p>
+      </div>
+      <div class="perm-row">
+        <span class="perm-chip">nativeMessaging</span>
+        <p>The only channel the extension uses to talk to the Velox Downloader app installed on your computer.</p>
+      </div>
+      <div class="perm-row">
+        <span class="perm-chip">storage</span>
+        <p>Remembers the single on/off toggle described above.</p>
+      </div>
+      <div class="perm-row">
+        <span class="perm-chip">host: &lt;all_urls&gt;</span>
+        <p>Lets the "Download this video" button appear on whichever site you're actually watching a video on — videos can live on any domain, so this can't be narrowed to a fixed list of sites.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="not">
+    <h2><span class="num">05</span> What it never does</h2>
+    <div class="not-list">
+      <div class="not-item"><span class="x">✕</span> Sell or share your data with anyone</div>
+      <div class="not-item"><span class="x">✕</span> Run ads or ad tracking</div>
+      <div class="not-item"><span class="x">✕</span> Use analytics or telemetry</div>
+      <div class="not-item"><span class="x">✕</span> Send anything to a remote server</div>
+      <div class="not-item"><span class="x">✕</span> Read page content beyond video elements</div>
+      <div class="not-item"><span class="x">✕</span> Store download history or file contents</div>
+    </div>
+  </section>
+
+  <section id="thirdparty">
+    <h2><span class="num">06</span> Third parties</h2>
+    <p>None. The extension does not integrate any third-party SDK, analytics library, or remote API. The only other software it communicates with is the Velox Downloader desktop app, which is also built by the same developer and runs entirely on your own computer.</p>
+  </section>
+
+  <section id="children">
+    <h2><span class="num">07</span> Children's privacy</h2>
+    <p>Velox Downloader — Browser Companion is a general-purpose utility not directed at children, and it does not knowingly collect data from anyone, of any age — see Overview above.</p>
+  </section>
+
+  <section id="changes">
+    <h2><span class="num">08</span> Changes to this policy</h2>
+    <p>If this policy changes, the "Last updated" date at the top of this page will change with it. Since this extension has no account system or mailing list, this page is the single source of truth — check back here if you want the current version.</p>
+  </section>
+
+  <section id="contact">
+    <h2><span class="num">09</span> Contact</h2>
+    <p>Questions about this extension or this policy: <a class="contact" href="mailto:zasghar991@gmail.com">zasghar991@gmail.com</a></p>
+  </section>
+
+  <footer>
+    Velox Downloader — Browser Companion is an independent, individually-published project, not affiliated with Google or Chrome.
+  </footer>
+
+</div>

@@ -1,2 +1,2 @@
-# velox-downloader
-Velox Downloader - personal download manager with browser companion extension
+# fetchly-downloader
+Fetchly Downloader - personal download manager with browser companion extension

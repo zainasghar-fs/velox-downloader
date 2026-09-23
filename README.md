@@ -1,2 +1,2 @@
-# fetchly-downloader
-Fetchly Downloader - personal download manager with browser companion extension
+# vantload-downloader
+Vantload Downloader - personal download manager with browser companion extension

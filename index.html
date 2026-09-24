@@ -1,4 +1,9 @@
-<title>Vantload Companion Privacy</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vantload Downloader — Privacy Policy</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
 
@@ -250,6 +255,8 @@
     font-size: 0.88em;
   }
 </style>
+</head>
+<body>
 
 <div class="page">
 
@@ -261,7 +268,7 @@
   </header>
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated September 15, 2026</p>
+  <p class="updated">Last updated September 24, 2026</p>
 
   <nav class="toc" aria-label="Table of contents">
     <p>On this page</p>
@@ -271,6 +278,7 @@
       <li><a href="#storage">What it stores</a></li>
       <li><a href="#permissions">Why each permission exists</a></li>
       <li><a href="#not">What it never does</a></li>
+      <li><a href="#app">The desktop app</a></li>
       <li><a href="#thirdparty">Third parties</a></li>
       <li><a href="#children">Children's privacy</a></li>
       <li><a href="#changes">Changes to this policy</a></li>
@@ -285,12 +293,13 @@
 
   <section id="access">
     <h2><span class="num">02</span> What the extension can see</h2>
-    <p>The extension reads two kinds of information, only at the moment they're needed:</p>
+    <p>The extension looks at the following, and only to do its one job:</p>
     <ul class="plain">
       <li><strong>Download URLs</strong> — when Chrome starts a download, the extension reads that download's URL and suggested filename so it can offer it to Vantload Downloader.</li>
-      <li><strong>Video source URLs</strong> — the content script looks for <code class="inline">&lt;video&gt;</code> elements on the page you're viewing, so it can show a "Download this video" button. It reads the video's source URL only when you click that button — it does not read surrounding page text, forms, or any other content.</li>
+      <li><strong>Video elements on the page you're watching</strong> — the content script checks the page's <code class="inline">&lt;video&gt;</code> elements (their size and whether they are playing) to decide where to show the "Download this video" button. To avoid covering the site's own controls it also notes where the page's other buttons are on screen, and on feed pages it looks at the links in the post that is playing to find that post's address. All of this is worked out on your computer and none of it is kept or sent anywhere.</li>
+      <li><strong>The video's address, when you click the button</strong> — only then is the address of the video or its page handed to the desktop app. It does not read page text, form fields, passwords, or messages.</li>
     </ul>
-    <div class="callout"><strong>None of this leaves your computer.</strong> Both kinds of URL are sent only to the Vantload Downloader app running locally on your own machine, over Chrome's Native Messaging protocol — a local, direct channel between the extension and a desktop app you installed. Nothing is transmitted to the developer, to analytics services, or to any server on the internet.</div>
+    <div class="callout"><strong>None of this leaves your computer.</strong> The URLs are sent only to the Vantload Downloader app running locally on your own machine, over Chrome's Native Messaging protocol — a local, direct channel between the extension and a desktop app you installed. Nothing is transmitted to the developer or to any analytics service.</div>
   </section>
 
   <section id="storage">
@@ -326,29 +335,40 @@
       <div class="not-item"><span class="x">✕</span> Sell or share your data with anyone</div>
       <div class="not-item"><span class="x">✕</span> Run ads or ad tracking</div>
       <div class="not-item"><span class="x">✕</span> Use analytics or telemetry</div>
-      <div class="not-item"><span class="x">✕</span> Send anything to a remote server</div>
-      <div class="not-item"><span class="x">✕</span> Read page content beyond video elements</div>
+      <div class="not-item"><span class="x">✕</span> Send anything to a server run by the developer</div>
+      <div class="not-item"><span class="x">✕</span> Read your page text, forms, or messages</div>
       <div class="not-item"><span class="x">✕</span> Store download history or file contents</div>
     </div>
   </section>
 
+  <section id="app">
+    <h2><span class="num">06</span> The desktop app</h2>
+    <p>The extension only works together with the Vantload Downloader desktop app, so for completeness here is what the app does with your data:</p>
+    <ul class="plain">
+      <li><strong>It stores locally, on your PC only:</strong> your download list (file names, addresses, progress) and a couple of settings such as theme. These live in your Windows user profile (<code class="inline">%APPDATA%\VantloadDownloader</code>) and are never uploaded. Deleting that folder removes them.</li>
+      <li><strong>It connects to the sites you choose to download from.</strong> When you download a file or video, your computer contacts that site directly — the same as your browser would. For videos it uses the open-source tools yt-dlp and ffmpeg, which are bundled with the app and run on your computer.</li>
+      <li><strong>It has no accounts, no analytics and no telemetry,</strong> and it does not phone home. It does not check for updates in the background.</li>
+      <li><strong>It can start with Windows</strong> and stay in the system tray so it can catch downloads from your browser. You can turn this off in Options, and uninstalling removes it.</li>
+    </ul>
+  </section>
+
   <section id="thirdparty">
-    <h2><span class="num">06</span> Third parties</h2>
-    <p>None. The extension does not integrate any third-party SDK, analytics library, or remote API. The only other software it communicates with is the Vantload Downloader desktop app, which is also built by the same developer and runs entirely on your own computer.</p>
+    <h2><span class="num">07</span> Third parties</h2>
+    <p>None. The extension does not integrate any third-party SDK, analytics library, or remote API, and it talks to nothing except the Vantload Downloader desktop app on your computer. The desktop app bundles the open-source tools yt-dlp and ffmpeg, which run locally; they connect only to the sites you ask them to download from.</p>
   </section>
 
   <section id="children">
-    <h2><span class="num">07</span> Children's privacy</h2>
+    <h2><span class="num">08</span> Children's privacy</h2>
     <p>Vantload Downloader — Browser Companion is a general-purpose utility not directed at children, and it does not knowingly collect data from anyone, of any age — see Overview above.</p>
   </section>
 
   <section id="changes">
-    <h2><span class="num">08</span> Changes to this policy</h2>
+    <h2><span class="num">09</span> Changes to this policy</h2>
     <p>If this policy changes, the "Last updated" date at the top of this page will change with it. Since this extension has no account system or mailing list, this page is the single source of truth — check back here if you want the current version.</p>
   </section>
 
   <section id="contact">
-    <h2><span class="num">09</span> Contact</h2>
+    <h2><span class="num">10</span> Contact</h2>
     <p>Questions about this extension or this policy: <a class="contact" href="mailto:zasghar991@gmail.com">zasghar991@gmail.com</a></p>
   </section>
 
@@ -357,3 +377,6 @@
   </footer>
 
 </div>
+
+</body>
+</html>
